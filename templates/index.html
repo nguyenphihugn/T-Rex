@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='T-REXLOGO-RM.png') }}"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style type="text/css">
+      .hidden {
+        display: none;
+      }
+    </style>
+    <script type="text/javascript">
+      $("html").addClass("hidden");
+      $(document).ready(function () {
+        $("html").show();
+      });
+    </script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/webcam-easy@1.1.1/dist/webcam-easy.min.js"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>T-Rex Pics</title>
+  </head>
+
+  <body>
+    <h1>Dự đoán</h1>
+    <form
+      id="autoUploadForm"
+      action="/upload"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label for="file" id="file"> </label>
+      <div class="camera-edit">
+        <label onclick="switchForm" class="cam"></label>
+      </div>
+      <div class="avatar-upload">
+        <div class="avatar-edit">
+          <input type="file" name="file" id="imageUpload" accept="image/*" />
+          <label for="imageUpload" id="inputFile"></label>
+        </div>
+        <div class="avatar-preview" id="form1">
+          {% if message or result %}
+          <div
+            id="imagePreview"
+            style="background-image: url('/static/upload/temp_image.jpg')"
+          ></div>
+          {% else %}
+          <div id="imagePreview"></div>
+          {% endif %}
+        </div>
+        <!-- camera -->
+        <div class="avatar-preview" id="form2" style="display: none">
+          <div class="webcamimg">
+            <video id="webCam" autoplay playsinlne></video>
+            <canvas id="canvas"></canvas>
+          </div>
+          <!-- button -->
+        </div>
+      </div>
+      <button id="btn-shot" class="buttonshot">Chụp ảnh</button>
+      {% if message %}
+      <p id="thongbao">{{ message }}</p>
+      {% endif %}
+    </form>
+
+    <form action="/predict" method="post" id="btndudoan">
+      <button class="button-54" type="submit">Dự đoán</button>
+    </form>
+
+    {% if result %}
+    <p id="ketqua">{{ result }}</p>
+    <div>
+      <span>
+        <a class="button-81" href="{{ google_link }}" target="_blank"
+          >Tìm hiểu thêm</a
+        ></span
+      >
+    </div>
+    {% endif %}
+
+    <div class="theme-container">
+      <input type="checkbox" class="checkbox" id="checkbox" />
+      <label for="checkbox" class="checkbox-label">
+        <ion-icon name="moon" class="moon"></ion-icon>
+        <ion-icon name="sunny" class="sunny"></ion-icon>
+        <span class="ball"></span>
+      </label>
+    </div>
+  </body>
+</html>

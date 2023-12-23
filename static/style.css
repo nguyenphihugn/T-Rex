@@ -1,0 +1,361 @@
+@import url("https://fonts.googleapis.com/css2?family=Braah+One&family=Nunito:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: var(--image);
+  transition: background 0.3s linear;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+:root.dark {
+  --text: #fff;
+  --background: #282828;
+  --background-blue: #282828;
+  --background-dark: #121212;
+  --background-light: #717171;
+  --image: url("/static/TREXLENS-Dark.png");
+  --image-upload: url("/static/upload-dark.png");
+}
+
+:root,
+:root.light {
+  --text: #121212;
+  --background: #fff;
+  --background-blue: #007acc;
+  --background-dark: #121212;
+  --background-light: #fff;
+  --image: url("/static/TREXLENS.png");
+  --image-upload: url("/static/upload-light.png");
+}
+
+.theme-container {
+  width: 4.375rem;
+  height: 4.375rem;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 9999;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox-label {
+  background-color: var(--background-blue);
+  width: 3.125rem;
+  height: 1.625rem;
+  border-radius: 50px;
+  position: relative;
+  padding: 0.313rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s linear;
+}
+
+.checkbox-label .ball {
+  background-color: #fff;
+  width: 1.375rem;
+  height: 1.375rem;
+  position: absolute;
+  left: 0.125rem;
+  top: 0.125rem;
+  border-radius: 50%;
+  transition: transform 0.3s linear;
+}
+
+.moon {
+  color: #dddddd;
+}
+
+.sunny {
+  color: rgb(252, 227, 0);
+}
+
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(1.5rem);
+}
+
+h1 {
+  color: var(--text);
+}
+
+form {
+  display: flex;
+  margin: 0 0 0.625rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+input[name="model_file"] {
+  border: 2px solid #4285f4;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#webCam {
+  width: 37.5rem;
+  height: 25rem;
+}
+
+#canvas {
+  width: 37.5rem;
+  height: 25rem;
+}
+
+.iconcam {
+  width: 2rem;
+  height: 2rem;
+}
+
+.cam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  margin-bottom: 0;
+  border-radius: 0.625rem;
+  background: var(--background-light);
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: var(--background);
+    border-color: #d6d6d6;
+  }
+  /* &:after {
+    content: "\f040";
+    font-family: "FontAwesome";
+    color: var(--text);
+    position: absolute;
+    top: 0.625rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+  } */
+}
+
+input[id="imageUpload"] {
+  display: none;
+  + label {
+    display: inline-block;
+    width: 2.125rem;
+    height: 2.125rem;
+    margin-bottom: 0;
+    border-radius: 0.625rem;
+    background: var(--background-light);
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background: var(--background);
+      border-color: #d6d6d6;
+    }
+    &:after {
+      content: "\f040";
+      font-family: "FontAwesome";
+      color: var(--text);
+      position: absolute;
+      top: 0.625rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      margin: auto;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}
+
+#imagePreview {
+  background-image: var(--image-upload);
+  transition: background 0.3s linear;
+}
+
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 0.188rem solid;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 0.313rem;
+  left: 0.313rem;
+}
+
+.buttonshot {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.125rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 0.188rem solid;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
+    5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonshot:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 0.313rem;
+  left: 0.313rem;
+}
+
+#thongbao,
+#ketqua {
+  margin-top: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.avatar-upload {
+  position: relative;
+  background: var(--background);
+  margin: 1.875rem auto;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  .avatar-edit {
+    position: absolute;
+    right: 0.75rem;
+    z-index: 1;
+    top: 0.625rem;
+  }
+
+  .avatar-preview {
+    width: 37.5rem;
+    height: 25rem;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.24) 0rem 0.188rem 0.5rem;
+    border-radius: 0.625rem;
+    > div {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.625rem;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+}
+
+.button-81 {
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 0.625rem;
+}
+
+.button-81:hover {
+  background-color: var(--background-dark);
+  color: #fff;
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 70%;
+  }
+
+  .avatar-upload {
+    background: var(--background);
+  }
+
+  #thongbao,
+  #ketqua {
+    background: var(--background);
+    padding: 0.625rem 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  }
+
+  .avatar-upload .avatar-edit {
+    right: 1.875rem;
+  }
+}
+
+@media (max-width: 460px) {
+  html {
+    font-size: 65%;
+  }
+
+  .avatar-upload .avatar-preview {
+    width: 32.5rem;
+    height: 20rem;
+  }
+
+  #webCam {
+    width: 32.5rem;
+    height: 20rem;
+  }
+}
